@@ -6,8 +6,9 @@ if (isset($_POST['salvar'])) {
     $diretorio = "uploads/";
     $arquivoDestino = $diretorio . $_FILES['arquivo']['name'];
 
+    $nomeArquivo = "";
     if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $arquivoDestino)) {
-        echo "Arquivo enviado com sucesso";
+        $nomeArquivo = $_FILES['arquivo']['name'];
     } else {
         echo "ERRO: Arquivo não enviado";
     }
@@ -18,7 +19,7 @@ if (isset($_POST['salvar'])) {
     $senha = $_POST['senha'];
 
     //3. Preparar a SQL
-    $sql = "insert into usuario (nome, email, senha) values ('$nome', '$email', '$senha')";
+    $sql = "insert into usuario (nome, email, senha, arquivo) values ('$nome', '$email', '$senha', '$nomeArquivo')";
 
     //4. Executar a SQL
     mysqli_query($conexao, $sql);
