@@ -3,6 +3,15 @@
 require_once("conexao.php");
 $corpo = "";
 if (isset($_POST['salvar'])) {
+    $diretorio = "uploads/";
+    $arquivoDestino = $diretorio . $_FILES['arquivo']['name'];
+
+    if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $arquivoDestino)) {
+        echo "Arquivo enviado com sucesso";
+    } else {
+        echo "ERRO: Arquivo não enviado";
+    }
+
     //2. Receber os dados para inserir no BD
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -32,7 +41,7 @@ if (isset($_POST['salvar'])) {
       ?>
   
 </form>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         
     
         <div class="mb-3">
@@ -46,6 +55,10 @@ if (isset($_POST['salvar'])) {
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Senha</label>
             <input type="password" class="form-control" value="<?= $senha ?>" name="senha" placeholder="Escreva sua senha">
+        </div>
+        <div class="mb-3">
+            <label for="arquivo" class="form-label">Foto</label>
+            <input name="arquivo" type="file" class="form-control" id="arquivo">
         </div>
         
 
