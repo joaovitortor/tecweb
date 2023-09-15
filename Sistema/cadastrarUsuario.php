@@ -61,7 +61,7 @@ if (isset($_POST['salvar'])) {
             <label for="usuariogrupo_id" class="form-label">Grupo de Usuário</label>
             <select name="usuariogrupo_id" class="form-select">
                 <?php
-                    $sql = "selec * from gruposusuario order by nome";
+                    $sql = "select * from grupousuario order by nome";
                     $resultado = mysqli_query($conexao, $sql);
 
                     while ($linha = mysqli_fetch_array($resultado)) :
