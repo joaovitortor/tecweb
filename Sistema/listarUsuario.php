@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 $corpo = "listar";
-require_once("verificaAutenticacao.php");
+
 require_once("conexao.php");
 
 //Exclusao//
