@@ -57,6 +57,24 @@ if (isset($_POST['salvar'])) {
             <label for="exampleFormControlInput1" class="form-label">Senha</label>
             <input type="password" class="form-control" value="<?= $senha ?>" name="senha" placeholder="Escreva sua senha">
         </div>
+        <div class="m3-3">
+            <label for="usuariogrupo_id" class="form-label">Grupo de Usuário</label>
+            <select name="usuariogrupo_id" class="form-select">
+                <?php
+                    $sql = "selec * from gruposusuario order by nome";
+                    $resultado = mysqli_query($conexao, $sql);
+
+                    while ($linha = mysqli_fetch_array($resultado)) :
+                        $id = $linha['id'];
+                        $nome = $linha['nome'];
+
+                        echo "<option value='{$id}'>{$nome}</option>";
+                    endwhile
+                ?>
+
+            </select>
+
+        </div>
         <div class="mb-3">
             <label for="arquivo" class="form-label">Foto</label>
             <input name="arquivo" type="file" class="form-control" id="arquivo">
