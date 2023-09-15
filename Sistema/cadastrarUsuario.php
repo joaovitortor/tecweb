@@ -17,10 +17,10 @@ if (isset($_POST['salvar'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $usuariogrupo_id = $_POST['usuariogrupo_id']
+    $usuariogrupo_id = $_POST['usuariogrupo_id'];
 
     //3. Preparar a SQL
-    $sql = "insert into usuario (nome, email, senha, arquivo, usuariogrupo_id) values ('$nome', '$email', '$senha', '$nomeArquivo', '$usuariogrupo_id)";
+    $sql = "insert into usuario (nome, email, senha, arquivo, usuariogrupo_id) values ('$nome', '$email', '$senha', '$nomeArquivo', '$usuariogrupo_id')";
 
     //4. Executar a SQL
     mysqli_query($conexao, $sql);
